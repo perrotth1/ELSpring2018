@@ -1,2 +1,2 @@
-This is where you put your programs and code
+This directory is for my programs and code
 

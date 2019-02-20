@@ -1,2 +1,1 @@
-Miscellaneous items can be placed here
-
+This directory is for my miscellaneous items
