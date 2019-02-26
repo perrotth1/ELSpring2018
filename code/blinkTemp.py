@@ -34,20 +34,23 @@ def logTemp():
 			cur = con.cursor()
 			#sql = "insert into TempData values(?,?,?)
 			cur.execute('insert into TempData values(?,?,?)', (t,C,F))
-			print "Temperature Logged"
+			os.system('clear')
+			print "Temperature Logged: \n\n"
+			for row in cur.execute('select * from TempData'):
+				print row
 		except Exception as e:
 			print "Error!"
 			print e
 
 try:
+	print "Temperature Reading Has Begun!"
 	while True:
-		input_state = GPIO.input(26)
-		if input_state == False:
-			GPIO.output(17,True)
-			logTemp()
-			time.sleep(1)
-		else:
-			GPIO.output(17,False)
+		time.sleep(4)
+		GPIO.output(17,True)
+		logTemp()
+		time.sleep(1)
+		GPIO.output(17,False)
+
 except KeyboardInterrupt:
 	os.system('clear')
 	print('ya damn crook')
