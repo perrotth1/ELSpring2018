@@ -14,4 +14,19 @@ def readTemp():
 	tempF=tempC*9.0/5.0+32.0
 	return [currentTime, tempC, tempF]
 
-print readTemp()
+def logTemp():
+	con = mydb.connect('/home/henry/ELSpring2019/code/temperature.db')
+	with con:
+		try:
+			[t,C,F] = readTemp();
+			print "Current Temperature Is: %s F" %F
+			cur = con.cursor()
+			#sql = "insert into TempData values(?,?,?)
+			cur.execute('insert into TempData values(?,?,?)', (t,C,F))
+			print "Temperature Logged"
+		except Exception as e:
+			print "Error!"
+			print e
+
+#print readTemp()
+logTemp()
