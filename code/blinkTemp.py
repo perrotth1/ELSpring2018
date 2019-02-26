@@ -4,6 +4,17 @@ import os
 import time
 import sqlite3 as mydb
 import sys
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17,GPIO.OUT)
+GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+def blinkOnce(pin):
+	GPIO.output(pin, True)
+	time.sleep(.1)
+	GPIO.output(pin, False)
+	time.sleep(.1)
 
 def readTemp():
 	tempfile = open("/sys/bus/w1/devices/28-000006979949/w1_slave")
@@ -28,5 +39,16 @@ def logTemp():
 			print "Error!"
 			print e
 
-#print readTemp()
-logTemp()
+try:
+	while True:
+		input_state = GPIO.input(26)
+		if input_state == False:
+			GPIO.output(17,True)
+			logTemp()
+			time.sleep(1)
+		else:
+			GPIO.output(17,False)
+except KeyboardInterrupt:
+	os.system('clear')
+	print('ya damn crook')
+	GPIO.cleanup()
