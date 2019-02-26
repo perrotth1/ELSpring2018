@@ -45,7 +45,7 @@ def logTemp():
 try:
 	print "Temperature Reading Has Begun!"
 	while True:
-		time.sleep(4)
+		time.sleep(60)
 		GPIO.output(17,True)
 		logTemp()
 		time.sleep(1)
