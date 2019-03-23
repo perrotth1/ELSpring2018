@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+<head>
+	<!-- basic.html -->
+	<title>basic.html</title>
+	<meta charset = "UTF-8" />	
+</head>
+
+<body>
+	<h1>Henry Perrottet Motion Sensor Log</h1>
+	<p>Rows appear most recent to least recent</p>
+	<p>___|| DATE / TIME || DIRECTION || CURRENT OCCUPANTS ||___
+	<table cellspacing="20">
+		{% for row in db %}
+		<tr>
+			<th>{{ row[0] }}</th><th>{{ row[1] }}</th><th>{{ row[2] }}</th>
+		</tr>
+		{% endfor %}
+	</table>
+
+</body>
+</html>
