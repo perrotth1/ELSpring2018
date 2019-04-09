@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE gps-run SYSTEM "http://kismetwireless.net/kismet-gps-2.9.1.dtd">
-
-<gps-run gps-version="5" start-time="Wed Mar 20 18:34:24 2019">
-
-    <network-file>kismetLogs/SUPPON-20190320-18-34-24-1.netxml</network-file>
-
-</gps-run>
